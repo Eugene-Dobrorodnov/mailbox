@@ -21,6 +21,9 @@ module Mailbox
     # config.i18n.default_locale = :de
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
+    config.autoload_paths += %W(
+      #{config.root}/app/controllers/api
+    )
     config.active_record.raise_in_transactional_callbacks = true
   end
 end
