@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   get '/home', to: 'home#index'
 
   namespace :api do
-    namespace :v1 do
-      root 'test#index', :defaults => { :format => 'json' }
-      get '/t', to: 'test#index'
+    namespace :v1, constraints: { format: :json }, defaults: { format: :json } do
+      root 'home#index'
+      devise_for :users, path: 'auth'
     end
   end
 
