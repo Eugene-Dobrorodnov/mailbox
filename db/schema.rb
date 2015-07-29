@@ -11,10 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150716085144) do
+ActiveRecord::Schema.define(version: 20150728121727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attachments", force: :cascade do |t|
+    t.integer  "latter_id"
+    t.string   "attachment", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "latters", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "subject"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "recipients", force: :cascade do |t|
+    t.integer "latter_id"
+    t.integer "user_id"
+    t.boolean "is_read",   default: false
+    t.boolean "is_spam",   default: false
+  end
+
+  add_index "recipients", ["latter_id", "user_id"], name: "index_recipients_on_latter_id_and_user_id", using: :btree
+  add_index "recipients", ["user_id", "latter_id"], name: "index_recipients_on_user_id_and_latter_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name",             default: "",    null: false
