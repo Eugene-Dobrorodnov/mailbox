@@ -36,6 +36,7 @@ gem 'pg'
 gem 'devise'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'simple_token_authentication', '~> 1.0'
+gem "will_paginate"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

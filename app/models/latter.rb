@@ -4,5 +4,7 @@ class Latter < ActiveRecord::Base
   has_many   :recipients,  dependent: :destroy
   has_many   :users, through: :recipients
 
+  scope :inbox, ->(user) { joins(:recipients).where(recipients: { user: user }) }
+
   validates :recipients, :presence => true
 end
