@@ -5,6 +5,7 @@ class Latter < ActiveRecord::Base
   has_many   :users, through: :recipients
 
   scope :inbox, ->(user) { joins(:recipients).where(recipients: { user: user }) }
+  scope :spam,  ->(user) { joins(:recipients).where(recipients: { user: user, is_spam: true }) }
 
   validates :recipients, :presence => true
 end

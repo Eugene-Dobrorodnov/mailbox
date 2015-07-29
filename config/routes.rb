@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     namespace :v1, constraints: { format: :json }, defaults: { format: :json } do
       root 'home#index'
       devise_for :users, path: 'auth'
-      resources :latters, only: %w(create index update)
+      get 'latters/sent',  to: 'latters#sent'
+      get 'latters/spam',  to: 'latters#spam'
+      resources :latters, only: %w(index show create update)
     end
   end
 

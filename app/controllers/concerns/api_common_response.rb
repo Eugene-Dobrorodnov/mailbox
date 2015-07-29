@@ -24,4 +24,11 @@ module ApiCommonResponse
     render json: response
   end
 
+  def raise_forbidden
+    render status: 403, json: {
+      success: false,
+      message: 'You are not authorized!'
+    }
+  end
+
 end
