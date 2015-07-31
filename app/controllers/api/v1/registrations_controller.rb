@@ -7,9 +7,9 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.create(person_params)
     if @user.save
-      render json: {user: @user}
+      render json: {user: @user, success: true}
     else
-      render json: {err: @user.errors}
+      render json: {err: @user.errors, success: false}
     end
   end
 

@@ -25,5 +25,12 @@ module Mailbox
       #{config.root}/app/controllers/api
     )
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.middleware.use Rack::Cors do
+      allow do
+        origins 'localhost:9000'
+        resource '*', :headers => :any, :methods => [:get, :post, :options, :delete]
+      end
+    end
   end
 end

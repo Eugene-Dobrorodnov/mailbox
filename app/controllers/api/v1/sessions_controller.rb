@@ -12,9 +12,7 @@ class Api::V1::SessionsController < Devise::SessionsController
 
     render json: {
       success: true,
-      auth_token: resource.authentication_token,
-      email: resource.email,
-      user_id: resource.id,
+      user: resource
     }
   end
 
