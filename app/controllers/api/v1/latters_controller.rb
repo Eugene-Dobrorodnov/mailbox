@@ -29,7 +29,7 @@ class Api::V1::LattersController < Api::BaseController
   private
 
   def latter_params
-    data = params.require(:latter).permit(:subject, :content, :attachment, users: [])
+    data = params.require(:latter).permit(:subject, :content, :attachments, users: [])
     data[:users] = User.where(id: data[:users])
     data
   end

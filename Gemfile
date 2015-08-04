@@ -34,6 +34,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'pg'
 gem 'devise'
+gem 'active_skin'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'simple_token_authentication', '~> 1.0'
 gem 'will_paginate'
